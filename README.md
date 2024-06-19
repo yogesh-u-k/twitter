@@ -32,8 +32,8 @@ Ensure you have the following installed on your local machine:
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/your-username/twitter-clone.git
-    cd twitter-clone
+    git clone https://github.com/your-username/twitter.git
+    cd twitter
     ```
 2. Install server dependencies:
 
@@ -43,9 +43,9 @@ Ensure you have the following installed on your local machine:
     ```
 ### Environment Variables
 
-Create a `.env` file in the `server` directory and add the following:
+Create a .env file in the directory and add the following:
 
-    ```sh
+ ```sh
     MONGO_URI=your_mongo_db_uri
     PORT=your_port
     JWT_SECRET=your_jwt_secret
@@ -53,7 +53,7 @@ Create a `.env` file in the `server` directory and add the following:
     CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
     CLOUDINARY_API_KEY=your_cloudinary_api_key
     CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-    ```
+ ```
 ### Running the Application
 
 1. Start the backend server:
@@ -94,7 +94,7 @@ The application should now be running on `http://localhost:5000`.
 
 ## Folder Structure
 
-    ```plaintext
+```plaintext
     twitter-clone/
     ├── server/                 # Express.js backend
     │   ├── db/             # Configuration files (e.g., database connection)
@@ -104,7 +104,7 @@ The application should now be running on `http://localhost:5000`.
     │   ├── routes/             # API routes
     │   └── lib/utils/              # Utility functions
     └── .env                    # Environment variables
-    ```
+```
 
   ## Features Breakdown
 
