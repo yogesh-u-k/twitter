@@ -14,7 +14,7 @@ export const signup = async (req, res) => {
       return res.status(400).json({ error: "Username is Already Taken" });
     }
     const existingEmail = await User.findOne({ email });
-    if (existingUser) {
+    if (existingEmail) {
       return res.status(400).json({ error: "Email is Already Taken" });
     }
     if (password.length < 6) {
@@ -73,6 +73,8 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: "Invalid Username or Password" });
     }
 
+
+
     generateTokenAndSetCookie(user._id, res);
 
     res.status(200).json({
@@ -84,6 +86,7 @@ export const login = async (req, res) => {
       following: user.following,
       profileIMg: user.profileImg,
       coverImg: user.coverImg,
+
     });
   } catch (error) {
     console.log(`Error in login Controller ${error.message}`);
@@ -92,25 +95,21 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  try{
-    res.cookie("jwt","",{maxAge:0})
-    res.status(200).json({message:"Logged Out SuccessFully"})
-
-  }
-  catch (error){
+  try {
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).json({ message: "Logged Out SuccessFully" });
+  } catch (error) {
     console.log(`Error in logout Controller ${error.message}`);
-    res.status(500).json({ error: "Internal Server Error" }); 
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-export const getMe = async(req, res)=>{
-  try{
-    const user = await User.findById(req.user._id).select("-password")
-    res.status(200).json(user)
-  }
-  catch(error){
+export const getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select("-password");
+    res.status(200).json(user);
+  } catch (error) {
     console.log(`Error in getMe Controller ${error.message}`);
-    res.status(500).json({ error: "Internal Server Error" }); 
-  
+    res.status(500).json({ error: "Internal Server Error" });
   }
-}
+};
