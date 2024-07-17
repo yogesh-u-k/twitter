@@ -3,7 +3,7 @@ import RightPanelSkeleton from "../skeletons/RightPanelSkeleton";
 import { USERS_FOR_RIGHT_PANEL } from "../../uitils/db/dummy";
 import {useQuery} from "@tanstack/react-query"
 import useFollow from "../../hooks/useFollow";
-import {LoadingSpinner} from './LoadingSpinner'
+import LoadingSpinner from './LoadingSpinner'
 
 const RightPanel = () => {
 
