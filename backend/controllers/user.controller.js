@@ -106,7 +106,7 @@ export const updateUser = async (req, res)=>{
       return res.status(404).json({message:"User not found"})
     }
 
-    if(!newPassword && !currentPassword || !currentPassword && !newPassword){
+    if(!newPassword && currentPassword || !currentPassword && newPassword){
       return res.status(400).json({error:"Please provide both current and new password"})
     }
 
@@ -149,8 +149,8 @@ export const updateUser = async (req, res)=>{
     user.profileImg = profileImg || user.profileImg;
     user.coverImg= coverImg || user.coverImg;
 
-    await user.save();
-     user.password =null
+    user = await user.save();
+    user.password =null
     return res.status(200).json(user);
 
   }
